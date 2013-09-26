@@ -36,9 +36,9 @@ public class LoginUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Window");
-        setBounds(new java.awt.Rectangle(450, 150, 380, 410));
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(380, 410));
+        setMinimumSize(new java.awt.Dimension(380, 400));
         setPreferredSize(new java.awt.Dimension(380, 430));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -106,7 +106,8 @@ public class LoginUI extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 380, 410);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-380)/2, (screenSize.height-430)/2, 380, 430);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -120,6 +121,13 @@ if(!login.check(jTextField1.getText(),jPasswordField1.getText()))
     jTextField1.setText("");
     jPasswordField1.setText("");
     jTextField1.requestFocus();
+}
+else    
+{
+   MainUI main=new MainUI();
+   this.setVisible(false);
+   main.setVisible(true);
+   
 }
     // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -163,6 +171,13 @@ login.onCancel();        // TODO add your handling code here:
                 jTextField1.setText("");
                 jPasswordField1.setText("");
                 jTextField1.requestFocus(); 
+            }
+            else
+            {
+                MainUI main=new MainUI();
+                this.setVisible(false);                
+                main.setVisible(true);
+                
             }
         }
         else
