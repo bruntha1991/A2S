@@ -9,11 +9,19 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 
+
 /**
  *
  * @author Bruntha
  */
 public class Login {
+    private static final long serialVersionUID = 1L;
+    
+    private String username;
+    
+    private String password;
+    
+    private String employeeid;
     private Connection con;
     private PreparedStatement ps;
     ResultSet rs;
@@ -97,5 +105,67 @@ public class Login {
     public void onLogin()
     {
         
+    }
+
+    public Login() {
+    }
+
+    public Login(String username) {
+        this.username = username;
+    }
+
+    public Login(String username, String password, String employeeid) {
+        this.username = username;
+        this.password = password;
+        this.employeeid = employeeid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmployeeid() {
+        return employeeid;
+    }
+
+    public void setEmployeeid(String employeeid) {
+        this.employeeid = employeeid;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (username != null ? username.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Login)) {
+            return false;
+        }
+        Login other = (Login) object;
+        if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "SuperMarket.Login[ username=" + username + " ]";
     }
 }

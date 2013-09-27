@@ -21,7 +21,15 @@ public class SalesUI extends javax.swing.JFrame {
     public SalesUI() {
         initComponents();
     }
-
+    public void setTotal(double tot)
+    {
+        total=tot;
+        jLabel1.setText("TOTAL :\t"+String.valueOf(total));
+    }
+    public double getTotal()
+    {
+        return total;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +87,7 @@ public class SalesUI extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(920, 90, 100, 40);
 
-        jButton2.setText("Add");
+        jButton2.setText("New Customer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -135,20 +143,13 @@ public class SalesUI extends javax.swing.JFrame {
         sale.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-    public void setTotal(double tot)
-    {
-        total=tot;
-    }
-    public double getTotal()
-    {
-        return total;
-    }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+                // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -200,6 +201,7 @@ public class SalesUI extends javax.swing.JFrame {
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

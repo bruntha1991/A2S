@@ -15,13 +15,16 @@ import javax.swing.table.DefaultTableModel;
 public class SalesUI_Add extends javax.swing.JFrame {
     
     SalesUI saleui;
+    Sales_Add saleadd=new Sales_Add();
+    
 
     /**
      * Creates new form SalesUI_Add
      */
     public SalesUI_Add(SalesUI su) {
         initComponents();
-        saleui=su;        
+        saleui=su;  
+        saleadd.connectDB();
     }
 
     /**
@@ -50,6 +53,17 @@ public class SalesUI_Add extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +76,11 @@ public class SalesUI_Add extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
 
@@ -124,29 +143,98 @@ public class SalesUI_Add extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DefaultTableModel model;
-        model = (DefaultTableModel) saleui.getTable().getModel();
-        model.addRow(new Object[]{jTextField1.getText(), "Column 2", "Column 3",jTextField2.getText(), "Column 3"});  
-        this.setVisible(false);// TODO add your handling code here:
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        DefaultTableModel model;
-        model = (DefaultTableModel) saleui.getTable().getModel();
-        model.addRow(new Object[]{jTextField1.getText(), "Column 2", "Column 3",jTextField2.getText(), "Column 3"});  
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField1.requestFocus();
-        
-        // TODO add your handling code here:
+onAdd();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+    if(evt.getKeyChar()==10)
+    {
+        if(saleadd.productIdValidation(jTextField1.getText()))
+        {
+            jTextField2.requestFocus();
+        }
+        else 
+        {
+            jTextField1.setText("");
+            jTextField1.requestFocus();
+        }
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+    if(evt.getKeyChar()==10)
+    {
+        if(saleadd.noOfItemValidation(jTextField2.getText()))
+        {
+            jButton2.requestFocus();
+        }
+        else 
+        {
+            jTextField2.setText("");
+            jTextField2.requestFocus();
+        }
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        
+        saleadd.setNoOfItem(Integer.parseInt(jTextField2.getText()));
+        saleadd.setProductId(jTextField1.getText());
+        if(saleadd.checkAvailalitity(jTextField1.getText()))
+        {
+        DefaultTableModel model;
+        model = (DefaultTableModel) saleui.getTable().getModel();
+        model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
+        saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField1.requestFocus();     
+        }
+        else
+        {
+            
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2KeyPressed
+    public void onOK()
+    {
+        DefaultTableModel model;
+        model = (DefaultTableModel) saleui.getTable().getModel();
+        model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
+        saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
+        this.setVisible(false);// TODO add your handling code here:
+        SalesUI_Payment sp=new SalesUI_Payment(saleui);
+        sp.setVisible(true);
+
+    }
+    public void onCancel()
+    {
+        
+    }
+    public void onAdd()
+    {
+        saleadd.setNoOfItem(Integer.parseInt(jTextField2.getText()));
+        saleadd.setProductId(jTextField1.getText());
+        DefaultTableModel model;
+        model = (DefaultTableModel) saleui.getTable().getModel();
+        model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
+        saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
+        
+        saleadd.saveHistory();
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField1.requestFocus();
+        
+
+    }
     /**
      * @param args the command line arguments
      */
