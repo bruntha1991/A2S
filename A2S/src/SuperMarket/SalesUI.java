@@ -14,6 +14,7 @@ public class SalesUI extends javax.swing.JFrame {
     
     Sales_Add saleadd1=new Sales_Add();
     private double total=0.0;
+    private int check=0;
     
     /**
      * Creates new form SalesUI
@@ -26,6 +27,15 @@ public class SalesUI extends javax.swing.JFrame {
         total=tot;
         jLabel1.setText("TOTAL :\t"+String.valueOf(total));
     }
+
+    public void setCheck(int check) {
+        this.check = check;
+    }
+
+    public int getCheck() {
+        return check;
+    }
+    
     public double getTotal()
     {
         return total;
@@ -114,7 +124,7 @@ public class SalesUI extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(920, 300, 100, 40);
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Report");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -153,9 +163,9 @@ public class SalesUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        DefaultTableModel model;
-        model = (DefaultTableModel) jTable1.getModel();
-        model.addRow(new Object[]{"Column 1", "Column 2", "Column 3","Column 2", "Column 3"});        // TODO add your handling code here:
+        ReportUI report;
+        report = new ReportUI(this);
+        report.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

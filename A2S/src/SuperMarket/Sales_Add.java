@@ -67,7 +67,7 @@ public class Sales_Add {
                 
         try
         {
-            ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`No`, `Date and Time`, `product_id`, `product_name`, `noOfUnits`) VALUES (?,?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`Date and Time`, `product_id`, `product_name`, `noOfUnits`) VALUES (?,?,?,?)");
 
             ps.setString(1,dat);
             ps.setString(2, productId);
@@ -114,23 +114,7 @@ public class Sales_Add {
     public void onCancel()
     {
         
-    }
-    public boolean productIdValidation(String pi)
-    {
-        boolean result=true;
-        
-        //validation 
-        
-        return result;
-    }
-    public boolean noOfItemValidation(String no)
-    {
-        boolean result=true;
-        
-        //validation 
-        
-        return result;
-    }
+    }    
     public void setProductId(String pi)
     {
         productId=pi;
@@ -147,16 +131,30 @@ public class Sales_Add {
     {
         return noOfItem;
     }
-    /*  vinojan fill this
-    public boolean productIdValidation()
+    
+    public boolean productIdValidation(String id)
     {
+        boolean result=true;
         
+   /*     if(id.length()!=15)
+        {
+            JOptionPane.showMessageDialog(null, "Lenght should be 15","Error",JOptionPane.ERROR_MESSAGE);
+            result=false;
+        }
+     */   return result;
     }
-    public boolean noOfItemValidation()
+    public boolean noOfItemValidation(String no)
     {
+        boolean result=true;
         
+   /*     if(no.length()!=15)
+        {
+            JOptionPane.showMessageDialog(null, "Should be greater than 0","Error",JOptionPane.ERROR_MESSAGE);
+            result=false;
+        }
+     */   return result;
     }
-*/
+
     
     
    

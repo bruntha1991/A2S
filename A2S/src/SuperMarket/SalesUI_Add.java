@@ -72,7 +72,7 @@ public class SalesUI_Add extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Add+1");
+        jButton2.setText("Add +1");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -99,7 +99,7 @@ public class SalesUI_Add extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
@@ -143,7 +143,8 @@ public class SalesUI_Add extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+onOK();
+this.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -152,7 +153,16 @@ onAdd();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-this.setVisible(false);        // TODO add your handling code here:
+        if(saleui.getCheck()==0)
+        {
+            this.setVisible(false);
+        }    
+        else
+        {
+                this.setVisible(false);// TODO add your handling code here:
+                SalesUI_Payment sp=new SalesUI_Payment(saleui);
+                sp.setVisible(true);
+        }// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -191,13 +201,15 @@ this.setVisible(false);        // TODO add your handling code here:
         saleadd.setProductId(jTextField1.getText());
         if(saleadd.checkAvailalitity(jTextField1.getText()))
         {
-        DefaultTableModel model;
-        model = (DefaultTableModel) saleui.getTable().getModel();
-        model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
-        saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField1.requestFocus();     
+            DefaultTableModel model;
+            model = (DefaultTableModel) saleui.getTable().getModel();
+            model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
+            saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
+            saleui.setCheck(2);
+            saleadd.saveHistory();
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField1.requestFocus();     
         }
         else
         {
@@ -210,6 +222,8 @@ this.setVisible(false);        // TODO add your handling code here:
         model = (DefaultTableModel) saleui.getTable().getModel();
         model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
         saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
+        saleui.setCheck(2);
+        saleadd.saveHistory();
         this.setVisible(false);// TODO add your handling code here:
         SalesUI_Payment sp=new SalesUI_Payment(saleui);
         sp.setVisible(true);
