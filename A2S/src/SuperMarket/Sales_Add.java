@@ -29,6 +29,7 @@ public class Sales_Add {
     private PreparedStatement ps;
     ResultSet rs;
     Statement st;
+    private String customerID;
     GregorianCalendar date = new GregorianCalendar();
     
 
@@ -36,6 +37,14 @@ public class Sales_Add {
         return price;
     }
 
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
+    }
+
+    public String getCustomerID() {
+        return customerID;
+    }
+    
     public String getProductname() {
         return productname;
     }
@@ -60,19 +69,66 @@ public class Sales_Add {
             System.out.println(e);
         }
     }
-    
+    public void updateLoyaltyCard(String id,double tot)
+    {
+        try
+        {
+            st=con.createStatement();
+            rs=st.executeQuery("select*from login where Username='"+id+"'");
+
+            if(!(rs.next()))
+            {
+                JOptionPane.showMessageDialog(null,"No user exist in this id","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+               double bal=rs.getDouble(3);
+               double last=bal+tot/100;
+               
+   //            rs.setDouble(3,last);
+                          
+                
+            }
+        }
+        catch(SQLException | HeadlessException e )
+        {
+            System.out.println(e);
+        }
+    }
+    public void saveCustomerHistory(String id,double tot)
+    {
+        String dat=date.get(Calendar.YEAR) +"-"+ (date.get(Calendar.MONTH)+1)+ "-"+ date.get(Calendar.DAY_OF_MONTH)+" "+date.get(Calendar.HOUR)+":"+date.get(Calendar.MINUTE)+":"+date.get(Calendar.SECOND);
+        try
+        {
+            ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`Date and Time`, `product_id`, `product_name`, `noOfUnits`, `date`, `month`, `year`) VALUES (?,?,?,?,?,?,?)");
+
+            ps.setString(1,dat);
+            ps.setString(2, id);
+            ps.setDouble(3, tot);
+            
+            ps.executeUpdate();
+        }
+        catch(SQLException | HeadlessException e )
+        {
+            System.out.println(e);
+        }
+    }
     public void saveHistory()
     {
-        String dat=date.get(Calendar.YEAR) +"-"+ date.get(Calendar.MONTH)+ "-"+ date.get(Calendar.DAY_OF_MONTH)+" "+date.get(Calendar.HOUR)+":"+date.get(Calendar.MINUTE)+":"+date.get(Calendar.SECOND);
+        String dat=date.get(Calendar.YEAR) +"-"+ (date.get(Calendar.MONTH)+1)+ "-"+ date.get(Calendar.DAY_OF_MONTH)+" "+date.get(Calendar.HOUR)+":"+date.get(Calendar.MINUTE)+":"+date.get(Calendar.SECOND);
                 
         try
         {
-            ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`Date and Time`, `product_id`, `product_name`, `noOfUnits`) VALUES (?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`Date and Time`, `product_id`, `product_name`, `noOfUnits`, `date`, `month`, `year`) VALUES (?,?,?,?,?,?,?)");
 
             ps.setString(1,dat);
             ps.setString(2, productId);
             ps.setString(3, productname);
-            ps.setInt(4, noOfItem);                
+            ps.setInt(4, noOfItem);    
+            ps.setInt(5,date.get(Calendar.DAY_OF_MONTH));
+            ps.setInt(6, (date.get(Calendar.MONTH)+1));
+            ps.setInt(7, date.get(Calendar.YEAR));
+ //           ps.setString(8,customerID);
 
             ps.executeUpdate();
         }

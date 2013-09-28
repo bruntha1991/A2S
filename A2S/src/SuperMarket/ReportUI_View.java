@@ -61,6 +61,7 @@ public class ReportUI_View extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
         jButton3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,11 +90,11 @@ public class ReportUI_View extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 80, 743, 250);
+        jScrollPane1.setBounds(20, 120, 743, 250);
 
         jButton1.setText("OK");
         getContentPane().add(jButton1);
-        jButton1.setBounds(380, 440, 73, 23);
+        jButton1.setBounds(820, 340, 70, 30);
 
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +103,7 @@ public class ReportUI_View extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(530, 440, 65, 23);
+        jButton2.setBounds(920, 340, 70, 30);
 
         jLabel1.setText("Month");
 
@@ -150,12 +151,17 @@ public class ReportUI_View extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(90, 90, 90))
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(10, 10, 750, 60);
+        jPanel2.setBounds(20, 50, 750, 60);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Sales Report");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(10, 10, 260, 30);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-1062)/2, (screenSize.height-600)/2, 1062, 600);
@@ -219,6 +225,7 @@ public class ReportUI_View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

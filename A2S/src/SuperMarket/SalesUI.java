@@ -58,6 +58,7 @@ public class SalesUI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,6 +72,7 @@ public class SalesUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sales Window");
         setMinimumSize(new java.awt.Dimension(1000, 562));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -86,7 +88,7 @@ public class SalesUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 11, 743, 250);
+        jScrollPane1.setBounds(10, 70, 743, 250);
 
         jButton1.setText("Main Window");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +97,7 @@ public class SalesUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(920, 90, 100, 40);
+        jButton1.setBounds(910, 210, 100, 40);
 
         jButton2.setText("New Customer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +106,7 @@ public class SalesUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(920, 20, 100, 40);
+        jButton2.setBounds(910, 70, 100, 40);
 
         jButton3.setText("Main Window");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +115,7 @@ public class SalesUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(920, 230, 100, 40);
+        jButton3.setBounds(910, 280, 100, 40);
 
         jButton4.setText("Main Window");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +124,7 @@ public class SalesUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(920, 300, 100, 40);
+        jButton4.setBounds(910, 390, 100, 40);
 
         jButton5.setText("Report");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -131,13 +133,18 @@ public class SalesUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(920, 160, 100, 40);
+        jButton5.setBounds(910, 140, 100, 40);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("TOTAL :");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(514, 270, 240, 30);
+        jLabel1.setBounds(510, 330, 240, 30);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Sales Management");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 10, 260, 30);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-1062)/2, (screenSize.height-600)/2, 1062, 600);
@@ -219,6 +226,7 @@ public class SalesUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

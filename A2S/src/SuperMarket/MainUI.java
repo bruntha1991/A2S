@@ -31,6 +31,7 @@ public class MainUI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,8 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("User setting");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +77,9 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(532, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jButton6)
+                .addContainerGap(403, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,7 +90,8 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton2)
                     .addComponent(jButton5)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
                 .addGap(214, 214, 214))
         );
 
@@ -147,5 +153,6 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     // End of variables declaration//GEN-END:variables
 }
