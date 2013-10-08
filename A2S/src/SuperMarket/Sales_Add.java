@@ -71,7 +71,7 @@ public class Sales_Add {
     }
     public void updateLoyaltyCard(String id,double tot)
     {
-        try
+/*        try
         {
             st=con.createStatement();
             rs=st.executeQuery("select*from login where Username='"+id+"'");
@@ -94,10 +94,10 @@ public class Sales_Add {
         {
             System.out.println(e);
         }
-    }
+*/    }
     public void saveCustomerHistory(String id,double tot)
     {
-        String dat=date.get(Calendar.YEAR) +"-"+ (date.get(Calendar.MONTH)+1)+ "-"+ date.get(Calendar.DAY_OF_MONTH)+" "+date.get(Calendar.HOUR)+":"+date.get(Calendar.MINUTE)+":"+date.get(Calendar.SECOND);
+ /*       String dat=date.get(Calendar.YEAR) +"-"+ (date.get(Calendar.MONTH)+1)+ "-"+ date.get(Calendar.DAY_OF_MONTH)+" "+date.get(Calendar.HOUR)+":"+date.get(Calendar.MINUTE)+":"+date.get(Calendar.SECOND);
         try
         {
             ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`Date and Time`, `product_id`, `product_name`, `noOfUnits`, `date`, `month`, `year`) VALUES (?,?,?,?,?,?,?)");
@@ -112,14 +112,14 @@ public class Sales_Add {
         {
             System.out.println(e);
         }
-    }
+ */   }
     public void saveHistory()
     {
         String dat=date.get(Calendar.YEAR) +"-"+ (date.get(Calendar.MONTH)+1)+ "-"+ date.get(Calendar.DAY_OF_MONTH)+" "+date.get(Calendar.HOUR)+":"+date.get(Calendar.MINUTE)+":"+date.get(Calendar.SECOND);
                 
         try
         {
-            ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`Date and Time`, `product_id`, `product_name`, `noOfUnits`, `date`, `month`, `year`) VALUES (?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO `supermarket_a2s`.`sales_history` (`Date_Time`, `product_id`, `product_name`, `noOfUnits`, `date`, `month`, `year`) VALUES (?,?,?,?,?,?,?)");
 
             ps.setString(1,dat);
             ps.setString(2, productId);
@@ -136,6 +136,38 @@ public class Sales_Add {
         {
             System.out.println(e);
         }
+    }
+    public void upodateStock()
+    {
+        int noOfStock;
+        noOfStock = 0;
+        try
+        {
+            st=con.createStatement();
+            rs=st.executeQuery("select * from product_type where id='"+productId+"'");
+
+            if(!(rs.next()))
+            {
+                JOptionPane.showMessageDialog(null,"Product id not valid","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                noOfStock=rs.getInt(4);
+                
+            }
+            
+            ps = con.prepareStatement("Update product_type Set units='"+(noOfStock-noOfItem)+"'Where id='"+productId+"'");
+            ps.executeUpdate();
+            
+        }
+        catch(SQLException | HeadlessException e )
+        {
+            System.out.println(e);
+        }
+        
+    //    ps = con.prepareStatement("Update login Set password='"+n_pword+"'Where username='"+userid+"'");
+      //  ps.executeUpdate();
+                    
     }
     public boolean checkAvailalitity(String id)
     {

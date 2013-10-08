@@ -31,7 +31,17 @@ public class SalesUI extends javax.swing.JFrame {
     public void setCheck(int check) {
         this.check = check;
     }
-
+    public void setTotal()
+    {
+        int row=jTable1.getRowCount();
+        double tt=0.0;
+        
+        for(int i=0;i<row;i++)
+        {
+            tt+=(Double)jTable1.getValueAt(i,5);
+        }
+        total=tt;
+    }
     public int getCheck() {
         return check;
     }
@@ -73,6 +83,7 @@ public class SalesUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sales Window");
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1000, 562));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -156,8 +167,10 @@ public class SalesUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         SalesUI_Add sale;
+   //     this.setEnabled(false);
         sale = new SalesUI_Add(this);
         sale.setVisible(true);
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
     
@@ -170,8 +183,8 @@ public class SalesUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        ReportUI report;
-        report = new ReportUI(this);
+        ReportUI_View report;
+        report = new ReportUI_View();
         report.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 

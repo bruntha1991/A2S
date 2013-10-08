@@ -13,7 +13,7 @@ public class LoginUI_Change extends javax.swing.JFrame {
     /**
      * Creates new form LoginUI
      */
-    Login login=new Login();
+    LoginChange login=new LoginChange();
     
     public LoginUI_Change() {
         initComponents();
@@ -120,7 +120,8 @@ public class LoginUI_Change extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 login.connectDB();
-if(!login.check(jTextField1.getText(),jPasswordField1.getText()))
+
+if(!login.check(jTextField1.getText(),jPasswordField1.getText(),jPasswordField2.getText()))
 {
     jTextField1.setText("");
     jPasswordField1.setText("");
@@ -137,7 +138,7 @@ else
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-login.onCancel();        // TODO add your handling code here:
+//    login.onCancel();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
@@ -151,7 +152,7 @@ login.onCancel();        // TODO add your handling code here:
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
     if(evt.getKeyChar()==10)
     {
-        if(login.usernameValidation(jTextField1.getText()))
+/*        if(login.usernameValidation(jTextField1.getText()))
         {
             jPasswordField1.requestFocus();
         }
@@ -160,12 +161,12 @@ login.onCancel();        // TODO add your handling code here:
             jTextField1.setText("");
             jTextField1.requestFocus();
         }
-    }
+   */ }
 // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
-    if(evt.getKeyChar()==10)
+/*    if(evt.getKeyChar()==10)
     {
         if(login.passwordValidation(jPasswordField1.getText()))
         {
@@ -192,7 +193,7 @@ login.onCancel();        // TODO add your handling code here:
         }
                 // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1KeyPressed
-    }
+ */   }
     /**
      * @param args the command line arguments
      */

@@ -15,6 +15,7 @@ public class ReportUI_View extends javax.swing.JFrame {
     Sales_Add saleadd1=new Sales_Add();
     private double total=0.0;
     private int check=0;
+    Report report=new Report();
     
     /**
      * Creates new form SalesUI
@@ -118,6 +119,11 @@ public class ReportUI_View extends javax.swing.JFrame {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31" }));
 
         jButton3.setText("View Report");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -170,6 +176,13 @@ public class ReportUI_View extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        report.connectDB();
+        report.setDate(jComboBox1.getSelectedIndex(), jComboBox2.getSelectedIndex(),jComboBox3.getSelectedIndex());   
+        report.getDetails();
+        report.printDetails(jTable1);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     /**
      *

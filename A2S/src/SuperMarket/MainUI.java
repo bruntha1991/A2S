@@ -32,8 +32,12 @@ public class MainUI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jButton1.setText("Sales");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -41,8 +45,12 @@ public class MainUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(82, 325, 57, 23);
 
         jButton2.setText("HR");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(160, 325, 47, 23);
 
         jButton3.setText("Exit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -50,8 +58,12 @@ public class MainUI extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(417, 325, 51, 23);
 
         jButton4.setText("CR");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(240, 325, 47, 23);
 
         jButton5.setText("Purchase");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -59,41 +71,25 @@ public class MainUI extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton5);
+        jButton5.setBounds(322, 325, 77, 23);
 
         jButton6.setText("User setting");
+        getContentPane().add(jButton6);
+        jButton6.setBounds(506, 325, 91, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jButton1)
-                .addGap(21, 21, 21)
-                .addComponent(jButton2)
-                .addGap(33, 33, 33)
-                .addComponent(jButton4)
-                .addGap(35, 35, 35)
-                .addComponent(jButton5)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(38, 38, 38)
-                .addComponent(jButton6)
-                .addContainerGap(403, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6))
-                .addGap(214, 214, 214))
-        );
+        jButton7.setText("Change password");
+        getContentPane().add(jButton7);
+        jButton7.setBounds(376, 397, 119, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\A2S\\Untitled-1.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1000, 560);
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(400, 180, 100, 14);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-1016)/2, (screenSize.height-601)/2, 1016, 601);
@@ -154,5 +150,8 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

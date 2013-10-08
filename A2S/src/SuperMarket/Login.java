@@ -32,7 +32,7 @@ public class Login {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hr","root","");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarket_a2s","root","");
         }
         catch(ClassNotFoundException | SQLException e )
         {
@@ -47,7 +47,7 @@ public class Login {
         try
         {
             st=con.createStatement();
-            rs=st.executeQuery("select*from login where Username='"+userid+"'");
+            rs=st.executeQuery("select*from employee_data where id='"+userid+"'");
 
             if(!(rs.next()))
             {

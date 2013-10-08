@@ -54,6 +54,11 @@ public class SalesUI_Add extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jButton2.setText("Add +1");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +76,11 @@ public class SalesUI_Add extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
             }
         });
 
@@ -175,7 +185,6 @@ public class SalesUI_Add extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 onOK();
-this.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -184,22 +193,18 @@ onAdd();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(saleui.getCheck()==0)
-        {
-            this.setVisible(false);
-        }    
-        else
-        {
-                this.setVisible(false);// TODO add your handling code here:
-                SalesUI_Payment sp=new SalesUI_Payment(saleui);
-                sp.setVisible(true);
-        }// TODO add your handling code here:
+onCancel();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
     if(evt.getKeyChar()==10)
     {
-        if(saleadd.productIdValidation(jTextField1.getText()))
+        if(jTextField1.getText().matches(""))
+        {
+            jButton3.requestFocus();
+        }
+        else if(saleadd.productIdValidation(jTextField1.getText()))
         {
             jTextField2.requestFocus();
         }
@@ -227,56 +232,88 @@ onAdd();        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2KeyPressed
 
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
-        
+        if(evt.getKeyChar()==10)
+        {
+            onAdd();
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        if(evt.getKeyChar()==10)
+        {
+            onCancel();
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        if(evt.getKeyChar()==10)
+        {
+            onOK();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
+    public void onOK()
+    {
         saleadd.setNoOfItem(Integer.parseInt(jTextField2.getText()));
         saleadd.setProductId(jTextField1.getText());
+
         if(saleadd.checkAvailalitity(jTextField1.getText()))
         {
             DefaultTableModel model;
             model = (DefaultTableModel) saleui.getTable().getModel();
             model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
-            saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
-            saleui.setCheck(2);
-            saleadd.saveHistory();
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField1.requestFocus();     
-        }
-        else
-        {
-            
-        }// TODO add your handling code here:
-    }//GEN-LAST:event_jButton2KeyPressed
-    public void onOK()
-    {
-        DefaultTableModel model;
-        model = (DefaultTableModel) saleui.getTable().getModel();
-        model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
-        saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
-        saleui.setCheck(2);
-        saleadd.saveHistory();
-        this.setVisible(false);// TODO add your handling code here:
-        SalesUI_Payment sp=new SalesUI_Payment(saleui);
-        sp.setVisible(true);
 
+            saleui.setTotal(saleui.getTotal()+(saleadd.getPrice()*saleadd.getNoOfItem())/2);
+            saleui.setCheck(2);
+
+            saleadd.saveHistory();
+            saleadd.upodateStock();
+
+            this.setVisible(false);// TODO add your handling code here:
+            SalesUI_Payment sp=new SalesUI_Payment(saleui);
+            sp.setVisible(true);
+        }
+        
     }
     public void onCancel()
     {
-        
+        if(saleui.getCheck()==0)
+        {
+            this.setVisible(false);
+        }    
+        else
+        {
+                this.setVisible(false);// TODO add your handling code here:
+                SalesUI_Payment sp=new SalesUI_Payment(saleui);
+                sp.setVisible(true);
+        }
     }
     public void onAdd()
     {
         saleadd.setNoOfItem(Integer.parseInt(jTextField2.getText()));
         saleadd.setProductId(jTextField1.getText());
-        DefaultTableModel model;
-        model = (DefaultTableModel) saleui.getTable().getModel();
-        model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
-        saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
         
-        saleadd.saveHistory();
+        if(saleadd.checkAvailalitity(jTextField1.getText()))
+        {
+            saleadd.upodateStock();
+            saleadd.saveHistory();
+        
+        
+            saleui.setCheck(2);
+            saleui.setTotal(saleui.getTotal()+saleadd.getPrice()*saleadd.getNoOfItem());
+            //table update 
+            DefaultTableModel model;
+            model = (DefaultTableModel) saleui.getTable().getModel();
+            model.addRow(new Object[]{jTextField1.getText(), saleadd.getProductname(), saleadd.getPrice(),jTextField2.getText(), saleadd.getPrice()*saleadd.getNoOfItem()});  
+            
+            
+
+        }
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField1.requestFocus();
+        
+        
         
 
     }
